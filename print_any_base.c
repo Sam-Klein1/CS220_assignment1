@@ -6,7 +6,53 @@
 
 char* print_any_base(unsigned long num, unsigned int base) {
 
+char symbols[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  char temp;
+  long n;
+  long rem = 0;
+  long quotient = num;
+  int i = 0, j, k = 0;
 
+  // allocate char array
+  char *str = (char *)malloc(sizeof(char) * 16);
+  memset(str, '\0', 16);
+
+  // 2 <= base <= 36
+  if (base < 2 || base > 36) {
+
+    strcpy(str, "illegal base");
+    return str;
+
+  }
+  // edge case
+  else if (num == 0) {
+
+    str[0] = '0';
+  } else {
+
+    // algorithm for converting to any base
+
+    while (quotient != 0) {
+
+      rem = quotient % base;      // get remainder
+      char symbol = symbols[rem]; // remainder number = symbol used
+      quotient = quotient / base; // get new quotient
+
+      str[i] = symbol;
+      i++;
+    }
+  }
+
+  // loop to reverse string using email from instructor
+  j = strlen(str) - 1;
+  while (k < j) {
+    temp = str[j];
+    str[j] = str[k];
+    str[k] = temp;
+    k++;
+    j--;
+  }
+  return str;
 
   
 }

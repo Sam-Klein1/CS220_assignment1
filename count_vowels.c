@@ -6,7 +6,19 @@
 
 unsigned int count_vowels(char *str){
 
+  int i;
+  unsigned int count = 0;
 
+  for (i = 0; i < strlen(str); i++) {
+
+    if (str[i] == 'A' || str[i] == 'a' || str[i] == 'E' || str[i] == 'e' ||
+        str[i] == 'I' || str[i] == 'i' || str[i] == 'O' || str[i] == 'o' ||
+        str[i] == 'U' || str[i] == 'u') {
+
+      count++;
+    }
+  }
+  return count;
 }
 
 int main(){

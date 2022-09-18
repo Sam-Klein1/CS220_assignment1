@@ -4,7 +4,32 @@
 
 void paritize(void *p, unsigned int num_bytes) {
 
+  int i, j;
+  char *byte_arr = p;
 
+  for(j = 0; j<num_bytes-1; j++){
+    
+    int count = 0, mask = 1;
+    for (i = 0; i<7; i++){
+      
+      if (byte_arr[j] & mask){
+    
+        count++;
+      }
+      mask = mask << 1;
+    }
+    //count is even 
+    if(count % 2 == 0){
+
+      byte_arr[j] = byte_arr[j] & 0x7f;
+    
+    }
+    //count is odd
+    if(count % 2 == 1){
+
+      byte_arr[j] = byte_arr[j] | 0x80;
+    }
+  }
 }
 
 int main(){

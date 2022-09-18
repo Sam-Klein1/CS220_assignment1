@@ -6,7 +6,19 @@
 
 unsigned long swap_bytes(unsigned long n){
 
+  int i;
+  char temp;
+  unsigned char *char_arr = (unsigned char *) &n;
 
+  for (i=0; i<strlen((const char *) char_arr); i+=2){
+    
+    temp = char_arr[i];
+    char_arr[i] = char_arr[i+1];
+    char_arr[i+1] = temp;
+
+  }
+
+  return n;
   
 
 }
